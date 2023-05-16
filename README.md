@@ -1,3 +1,12 @@
+## Problem Statement
+
+API should have a few basic methods like 
+• fetching N news articles
+• finding a news article with a specific title or author  
+• searching by keywords
+
+Include a cache in your API service as well so users are not fetching the same things over and over.
+
 ## Description
 
 [NewsApp](https://github.com/geekrishabh/newsapp). News App repo
@@ -53,3 +62,10 @@ $ npm run test:cov
 It can be accessed at host:port/api
 
 Dev mode `http:localhost:3000/api`
+
+
+## Deploying on Docker
+
+docker build -t news-app .
+
+docker run -dp 3000:3000 --name news-app news-app
