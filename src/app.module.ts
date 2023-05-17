@@ -8,13 +8,11 @@ import { AppService } from './app.service';
 import { NewsController } from './news/news.controller';
 import { GnewsService } from './gnews/gnews.service';
 
-
 dotenv.config();
 const env: string = process.env.ENV;
 console.log(`Environment: ${env}`);
 @Module({
-  imports: [ ConfigModule.forRoot(),
-    HttpModule,CacheModule.register()],
+  imports: [ConfigModule.forRoot(), HttpModule, CacheModule.register()],
   controllers: [AppController, NewsController],
   providers: [AppService, GnewsService],
 })
