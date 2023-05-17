@@ -61,10 +61,10 @@ export class NewsController {
   @ApiResponse({ status: 503, description: 'Service Unavailable -- Temporarily offline for maintenance. Please try again later' })
   @ApiQuery({ name: 'length', type: Number, required: false })
   @ApiQuery({ name: 'keyword', type: String, required: true })
-  @ApiQuery({ name: 'title', type: String, required: false })
+  @ApiQuery({ name: 'title', type: Boolean, required: false })
   async searchByKeyword(
     @Param('keyword') keyword: string,
-    title?: string,
+    title?: boolean,
     length = 10,
   ): Promise<any> {
     try {

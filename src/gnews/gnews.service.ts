@@ -23,15 +23,16 @@ export class GnewsService {
 
   async searchByKeyword(
     keyword: string,
-    title?: string,
+    title?: boolean,
     length?: number,
     lang: string = process.env.DEFAULT_LANGUAGE,
   ): Promise<any> {
-    //https://gnews.io/api/v4/search?q=example&apikey=API_KEY
     try {
+      let searchInTitle = 'title,description'
+      if(title) searchInTitle = 'title'
       const config = {
         method: 'GET',
-        url: `${process.env.GNAPI_ENDPOINT}/search?q=${keyword}&max=${length}&lang=${lang}&apikey=${process.env.API_KEY}`,
+        url: `${process.env.GNAPI_ENDPOINT}/search?q=${keyword}&in=${searchInTitle}&max=${length}&lang=${lang}&apikey=${process.env.API_KEY}`,
       };
       const response = await axios(config);
       return response.data;
@@ -40,10 +41,4 @@ export class GnewsService {
       return error;
     }
   }
-
-  // searchByTitle(title:string,length:number): any {
-  //    // https://gnews.io/api/v4/search?q=example&in=title&apikey=API_KEY
-  //     return
-
-  // }
 }

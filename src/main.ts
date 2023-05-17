@@ -8,7 +8,6 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { bufferLogs: true });
   app.flushLogs();
-  // app.useGlobalPipes(new ValidationPipe());
   /*  Load .env file variables  */
   dotenv.config();
   /*  Swagger Init   */
